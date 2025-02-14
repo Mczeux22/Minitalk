@@ -6,7 +6,7 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:17:07 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 20:30:18 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/14 10:59:22 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	ft_serveur(int sig)
 	static int	bit;
 	static int	i;
 
-	if ()
-	if (bit == 0)
+	if (sig == SIGUSR1)
+		i |= 0x01 << bit;
+	bit++;
+	if (bit == 8)
 	{
 		ft_printf("%c", i);
 		bit = 0;

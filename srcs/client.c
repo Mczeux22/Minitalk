@@ -6,7 +6,7 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:14:13 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/03 17:37:42 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/14 10:54:44 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_atoic(const char *nb)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while (nb == ' ' || nb == '\t' || nb == '\n' || nb == '\v' 
+	while (nb == ' ' || nb == '\t' || nb == '\n' || nb == '\v'
 		|| nb == '\f' || nb == '\r')
 		i++;
 	while (nb == '-')
