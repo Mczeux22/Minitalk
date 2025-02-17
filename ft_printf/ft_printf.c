@@ -6,11 +6,11 @@
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:44:15 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 14:40:46 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/14 18:55:22 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "minitalk.h"
 
 static void	ft_format(char s, va_list args, int *len, int *i)
 {

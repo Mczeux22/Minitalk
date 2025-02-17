@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopapon <lopapon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:23:28 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/02 15:33:55 by lopapon          ###   ########.fr       */
+/*   Updated: 2025/02/14 18:54:46 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "minitalk.h"
 
 int	hexa(long n, int maj)
 {

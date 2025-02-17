@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopapon <lopapon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:15:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/11/04 11:59:26 by lopapon          ###   ########.fr       */
+/*   Created: 2024/11/22 20:47:12 by loicpapon         #+#    #+#             */
+/*   Updated: 2025/02/14 18:55:54 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-int	ft_isdigit(int c)
+void	ft_putchar(char c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	write(1, &c, 1);
+}
+
+void	ft_print_percent(void)
+{
+	ft_putchar('%');
+	return ;
 }

@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:43:50 by loicpapon         #+#    #+#             */
-/*   Updated: 2024/11/13 09:51:03 by loicpapon        ###   ########.fr       */
+/*   Created: 2024/11/22 20:37:16 by loicpapon         #+#    #+#             */
+/*   Updated: 2025/02/14 18:54:19 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_print_hexa(unsigned int hexa, int *len, char format)
 {
-	if (lst || new)
+	char	tab[25];
+	char	*base;
+	int		i;
+
+	if (format == 'x')
+		base = "0123456789abcdef";
+	else if (format == 'X')
+		base = "0123456789ABCDEF";
+	i = 0;
+	if (hexa == 0)
 	{
-		new->next = *lst;
-		*lst = new;
+		ft_print_char('0', len);
+		return ;
 	}
+	while (hexa != 0)
+	{
+		tab[i] = base[hexa % 16];
+		hexa /= 16;
+		i++;
+	}
+	while (i--)
+		ft_print_char(tab[i], len);
 }

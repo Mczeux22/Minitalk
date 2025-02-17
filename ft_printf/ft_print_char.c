@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lopapon <lopapon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 13:06:43 by codespace         #+#    #+#             */
-/*   Updated: 2024/11/04 14:26:17 by lopapon          ###   ########.fr       */
+/*   Created: 2025/02/14 18:56:13 by loicpapon         #+#    #+#             */
+/*   Updated: 2025/02/14 18:58:32 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-int	ft_toupper(int c)
+void	ft_print_char(char c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+	write(1, &c, 1);
+	return ;
 }

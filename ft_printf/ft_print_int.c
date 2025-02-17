@@ -1,28 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 16:53:16 by lopapon           #+#    #+#             */
-/*   Updated: 2024/11/12 17:43:28 by loicpapon        ###   ########.fr       */
+/*   Created: 2024/11/22 20:46:14 by loicpapon         #+#    #+#             */
+/*   Updated: 2025/02/14 18:54:34 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_putstr(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	if (s)
+	while (str[i])
 	{
-		while (s[i])
-		{
-			(*f)(i, s + i);
-			i++;
-		}
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+void	ft_print_int(int n, int *len)
+{
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		(*len) += 11;
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_print_char('-', len);
+		ft_print_int(n * -1, len);
+	}
+	else
+	{
+		if (n > 9)
+			ft_print_int(n / 10, len);
+		ft_print_char(n % 10 + '0', len);
 	}
 }

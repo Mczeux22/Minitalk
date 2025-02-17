@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 10:45:48 by loicpapon         #+#    #+#             */
-/*   Updated: 2024/11/13 09:52:51 by loicpapon        ###   ########.fr       */
+/*   Created: 2025/02/14 18:44:02 by loicpapon         #+#    #+#             */
+/*   Updated: 2025/02/14 18:55:06 by loicpapon        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_print_str(char *str, int *len)
 {
-	while (lst)
+	size_t	i;
+
+	i = 0;
+	if (!str)
 	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
+		ft_putstr("(null)");
+		(*len) += 6;
+		return ;
 	}
-	return (lst);
+	while (str[i])
+	{
+		ft_print_char(str[i], len);
+		i++;
+	}
 }
