@@ -3,38 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   serveur.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
+/*   By: Lopapon <lopapon@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:17:07 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/14 18:29:45 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/26 18:44:13 by Lopapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static char	*ft_strjoin(char const *s1, char const *s2)
+static char	*ft_strjoine(char *s1, char s2)
 {
 	int		i;
-	int		j;
 	char	*nstr;
 
 	i = 0;
-	nstr = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	nstr = (char *)malloc(ft_strlen(s1) + 2);
 	if (nstr == 0)
 		return (0);
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		nstr[i] = s1[i];
 		i++;
 	}
-	j = 0;
-	while (s2[j])
-	{
-		nstr[i] = s2[j];
-		j++;
-		i++;
-	}
+	nstr[i++] = s2;
 	nstr[i] = '\0';
+	free(s1);
 	return (nstr);
 }
 
@@ -42,14 +36,14 @@ void	ft_serveur(int sig)
 {
 	static int	bit;
 	static int	i;
-	char		*str;
+	static char	*str;
 
 	if (sig == SIGUSR1)
 		i |= 0x01 << bit;
 	bit++;
 	if (bit == 8)
 	{
-		ft_strjoin(str, i);
+		str = ft_strjoine(str, i);
 		bit = 0;
 		i = 0;
 	}

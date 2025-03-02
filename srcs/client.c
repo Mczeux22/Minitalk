@@ -3,44 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+        */
+/*   By: Lopapon <lopapon@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:14:13 by loicpapon         #+#    #+#             */
-/*   Updated: 2025/02/14 19:02:45 by loicpapon        ###   ########.fr       */
+/*   Updated: 2025/02/21 00:51:07 by Lopapon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "minitalk.h"
 
 void	ft_confirm_message(int signal)
 {
 	if (signal == SIGUSR2)
 		ft_printf("%d\n", "Message received");
-}
-
-static int	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	result;
-
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	while (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10 + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
 }
 
 static void	ft_client(int pid, char str)

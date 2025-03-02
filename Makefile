@@ -3,51 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: loicpapon <loicpapon@student.42.fr>        +#+  +:+       +#+         #
+#    By: Lopapon <lopapon@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/10 10:20:23 by loicpapon         #+#    #+#              #
-#    Updated: 2025/02/14 19:02:18 by loicpapon        ###   ########.fr        #
+#    Created: 2025/02/21 00:52:46 by Lopapon           #+#    #+#              #
+#    Updated: 2025/02/26 18:37:20 by Lopapon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PRINTF	=	ft_printf/ft_print_char.c \
-			ft_printf/ft_print_hex.c \
-			ft_printf/ft_print_int.c \
-			ft_printf/ft_print_percent.c \
-			ft_printf/ft_print_ptr.c \
-			ft_printf/ft_print_str.c \
-			ft_printf/ft_print_unsigned_int.c \
-			ft_printf/ft_printf.c \
+SOURCES = srcs/serveur.c srcs/client.c
+OBJECTS = $(SOURCES:.c=.o)
 
-SRCC		= srcs/client.c
-SRCS		= srcs/serveur.c
-OBJS		= ${SRCS:.c=.o}
-OBJC		= ${SRCC:.c=.o}
-PRINTFF		= ${PRINTF:.c=.o}
-NAMEC		= client
-NAMES		= serveur
-INLUDE		= -I include
-CC			= cc
-CFLAGS		= -Wall -Werror -Wextra
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -Iinclude
 
+all: serveur client
 
-all:		$(NAMEC) $(NAMES) $(PRINTFF)
+serveur: srcs/serveur.o libft/libft.a
+	$(CC) -o $@ srcs/serveur.o -Llibft -lft
 
-$(NAMEC) : $(OBJC)
-		$(CC) $(CFLAGS) $(INCLUDE) $(OBJC) $(NAMEC)
-$(NAMES) : $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) $(INCLUDE) $(NAMES)
-$(PRINTFF) : $(PRINTF)
-		$(CC) $(CFLAGS) $(OBJS) $(INCLUDE) $(PRINTF)
+client: srcs/client.o libft/libft.a
+	$(CC) -o $@ srcs/client.o -Llibft -lft
 
+srcs/%.o: srcs/%.c
+	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
+libft/libft.a:
+	make -C libft
 
 clean:
-			rm -f ${OBJS}
+	rm -f $(OBJECTS)
+	make -C libft clean
+	rm -rf objs
+	
+fclean: clean
+	rm -f serveur client libft/libft.a
 
-fclean:		clean
-			rm -f ${NAMES} ${NAMEC} ${PRINTFF}
+re: fclean all
 
-re:			fclean all
-
-.PHONY:		all clean fclean re bonus
+.PHONY: all libft clean fclean re
